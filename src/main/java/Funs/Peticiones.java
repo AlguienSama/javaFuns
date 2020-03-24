@@ -1,22 +1,25 @@
 package Funs;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Ped {
+public class Peticiones {
 
-    public Ped() {
+    public Peticiones() {
     }
 
     // IMPORTS
-    public BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 
     /**
      * Pedir algo al usuario
      * @return string
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
     public String pedirAlgo() throws IOException {
         String data;
@@ -32,7 +35,7 @@ public class Ped {
      * Pedir algo al usuario con una frase
      * @param frase String que quieres que se muestre
      * @return string resultado del usuario
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
     public String pedirAlgo(String frase) throws IOException {
         String data;
@@ -47,9 +50,10 @@ public class Ped {
      * Array String unidimensional con opciones para elegir ()
      * @param opciones Array de opciones
      * @return Opción elegida
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
-    public String eligeOpciones(String... opciones) throws IOException {
+    @NotNull
+    public String eligeOpciones(@NotNull String... opciones) throws IOException {
         while (true) {
             String algo = pedirAlgo();
             for (String data : opciones) {
@@ -68,9 +72,9 @@ public class Ped {
      * Array String multidimensional con opciones para elegir retornando la primera
      * @param opciones Array Multidimensional con las opciones
      * @return La posición 0 del array de la opción seleccionada
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
-    public String eligeOpciones(String[]... opciones) throws IOException {
+    public String eligeOpciones(@NotNull String[]... opciones) throws IOException {
         while (true) {
             String algo = pedirAlgo();
             for (String[] data : opciones) {
@@ -82,7 +86,7 @@ public class Ped {
             System.out.print("Opción inválida < ");
             for (String[] data : opciones) {
                 for (String parm : data) {
-                    System.out.print("[" + data[0] + "] ");
+                    System.out.print("[" + parm + "] ");
                 }
             }
             System.out.println(">");
@@ -93,9 +97,9 @@ public class Ped {
      * Pedir algo al usuario y comprobar si coincide con algo del array pasado
      * @param opciones Opciones que quieres que coincidan
      * @return boolean si coincide
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
-    public boolean validaOpciones(String... opciones) throws IOException {
+    public boolean validaOpciones(@NotNull String... opciones) throws IOException {
         String algo = pedirAlgo();
         for (String data : opciones) {
             if (data.equalsIgnoreCase(algo))
@@ -108,6 +112,7 @@ public class Ped {
     /**
      * Pedir un int
      * @return int
+     * @throws IOException BufferedReader
      */
     public int pedirInt() throws IOException {
         String cantS = pedirAlgo();
@@ -117,6 +122,7 @@ public class Ped {
     /**
      * Pedir un long
      * @return long
+     * @throws IOException BufferedReader
      */
     public long pedirLong() throws IOException {
         String cantS = pedirAlgo();
@@ -127,7 +133,7 @@ public class Ped {
      * Pedir int con mínimo
      * @param min mínimo incluido
      * @return int
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
     public int pedirMin(int min) throws IOException {
         boolean exit = false;
@@ -147,7 +153,7 @@ public class Ped {
      * @param min Mínimo incluido
      * @param max Máximo incluido
      * @return int
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
     public int pedirNum(int min, int max) throws IOException {
         boolean exit = false;
@@ -166,7 +172,7 @@ public class Ped {
      * Pedir long con mínimo
      * @param min int incluido
      * @return long
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
     public long pedirLong(int min) throws IOException {
         boolean exit = false;
@@ -187,7 +193,7 @@ public class Ped {
      * @param min Mínimo incluido
      * @param max Máximo incluido
      * @return int
-     * @throws IOException
+     * @throws IOException BufferedReader
      */
     public int pedirNum(String frase, int min, int max) throws IOException {
         boolean exit = false;
@@ -206,6 +212,7 @@ public class Ped {
      * @param frase Frase que muestra al usuario
      * @param min Mínimo incluido
      * @return número
+     * @throws IOException BufferedReader
      */
     public int pedirNum(String frase, int min) throws IOException {
         boolean salir = false;
@@ -221,10 +228,11 @@ public class Ped {
 
     /**
      * Sumar valores de un array
-     * @param array
-     * @return suma
+     * @param array Valores a sumar
+     * @return resultado suma
      */
-    public static int sumarArray(int... array) {
+    @Contract
+    public int sumarArray(@NotNull int... array) {
         int r = 0;
         for (int i : array) {
             r+=i;
@@ -235,8 +243,8 @@ public class Ped {
 
     /**
      * Número a día de mes
-     * @param num
-     * @return string mes
+     * @param num número de mes
+     * @return nombre del mes o null
      */
     public String nameMes(int num) {
         String mes;
