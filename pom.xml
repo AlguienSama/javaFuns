@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>funs</artifactId>
-    <version>1.02</version>
+    <version>1.10</version>
     <dependencies>
         <dependency>
             <groupId>org.jetbrains</groupId>
