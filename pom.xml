@@ -7,5 +7,14 @@
     <groupId>org.example</groupId>
     <artifactId>funs</artifactId>
     <version>1.01</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations-java5</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
 
 </project>
