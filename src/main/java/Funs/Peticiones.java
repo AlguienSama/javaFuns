@@ -188,6 +188,25 @@ public class Peticiones {
     }
 
     /**
+     * Pedir long con frase y mínimo
+     * @param frase Frase para el usuario
+     * @param min int incluido
+     * @return long
+     * @throws IOException BufferedReader
+     */
+    public long pedirLong(String frase, int min) throws IOException {
+        boolean exit = false;
+        long num = 0;
+        while (!exit) {
+            System.out.println(frase);
+            num = pedirLong();
+            if (num >= min)
+                exit = true;
+        }
+        return num;
+    }
+
+    /**
      * Pedir un número con mínimo y máximo con frase
      * @param frase Frase para mostrar al usuario
      * @param min Mínimo incluido
