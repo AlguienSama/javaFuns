@@ -92,7 +92,7 @@ public class Peticiones {
                 int i = 0;
                 System.out.print("[ ");
                 for (String parm : data) {
-                    System.out.print(parm + (i++ >= data.length-1 ? " ] " : " | "));
+                    System.out.print(parm + (++i >= data.length ? " ] " : " | "));
                 }
             }
             System.out.println(">");
