@@ -90,9 +90,9 @@ public class Peticiones {
             System.out.print("Opción inválida < ");
             for (String[] data : opciones) {
                 int i = 0;
+                System.out.print("[ ");
                 for (String parm : data) {
-                    System.out.print("[ ");
-                    System.out.print(parm + (i++ >= data.length ? " ] " : " | "));
+                    System.out.print(parm + (i++ >= data.length-1 ? " ] " : " | "));
                 }
             }
             System.out.println(">");
