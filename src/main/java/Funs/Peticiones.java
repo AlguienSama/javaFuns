@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 public class Peticiones {
 
     public Peticiones() {
@@ -15,9 +16,9 @@ public class Peticiones {
     // IMPORTS
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-
     /**
      * Pedir algo al usuario
+     *
      * @return string
      * @throws IOException BufferedReader
      */
@@ -27,12 +28,13 @@ public class Peticiones {
             data = br.readLine();
             if (data.trim().equals(""))
                 System.out.println("Debes de introducir algo!");
-        }while (data.trim().equals(""));
+        } while (data.trim().equals(""));
         return data;
     }
 
     /**
      * Pedir algo al usuario con una frase
+     *
      * @param frase String que quieres que se muestre
      * @return string resultado del usuario
      * @throws IOException BufferedReader
@@ -42,12 +44,13 @@ public class Peticiones {
         do {
             System.out.println(frase);
             data = br.readLine();
-        }while (data.trim().equals(""));
+        } while (data.trim().equals(""));
         return data;
     }
 
     /**
      * Array String unidimensional con opciones para elegir ()
+     *
      * @param opciones Array de opciones
      * @return Opción elegida
      * @throws IOException BufferedReader
@@ -70,6 +73,7 @@ public class Peticiones {
 
     /**
      * Array String multidimensional con opciones para elegir retornando la primera
+     *
      * @param opciones Array Multidimensional con las opciones
      * @return La posición 0 del array de la opción seleccionada
      * @throws IOException BufferedReader
@@ -85,8 +89,11 @@ public class Peticiones {
             }
             System.out.print("Opción inválida < ");
             for (String[] data : opciones) {
+                int i = 0;
                 for (String parm : data) {
-                    System.out.print("[" + parm + "] ");
+                    i++;
+                    System.out.print("[ ");
+                    System.out.print(parm + (i + 1 == data.length ? " ] " : " | "));
                 }
             }
             System.out.println(">");
@@ -95,6 +102,7 @@ public class Peticiones {
 
     /**
      * Pedir algo al usuario y comprobar si coincide con algo del array pasado
+     *
      * @param opciones Opciones que quieres que coincidan
      * @return boolean si coincide
      * @throws IOException BufferedReader
@@ -111,6 +119,7 @@ public class Peticiones {
 
     /**
      * Pedir un int
+     *
      * @return int
      * @throws IOException BufferedReader
      */
@@ -121,6 +130,7 @@ public class Peticiones {
 
     /**
      * Pedir un long
+     *
      * @return long
      * @throws IOException BufferedReader
      */
@@ -131,6 +141,7 @@ public class Peticiones {
 
     /**
      * Pedir int con mínimo
+     *
      * @param min mínimo incluido
      * @return int
      * @throws IOException BufferedReader
@@ -143,13 +154,14 @@ public class Peticiones {
             if (num >= min)
                 exit = true;
             else
-                System.out.println("Número inválido (Mínimo "+min+")");
+                System.out.println("Número inválido (Mínimo " + min + ")");
         }
         return num;
     }
 
     /**
      * Pedir int con mínimo y máximo
+     *
      * @param min Mínimo incluido
      * @param max Máximo incluido
      * @return int
@@ -170,6 +182,7 @@ public class Peticiones {
 
     /**
      * Pedir long con mínimo
+     *
      * @param min int incluido
      * @return long
      * @throws IOException BufferedReader
@@ -182,15 +195,16 @@ public class Peticiones {
             if (num >= min)
                 exit = true;
             else
-                System.out.println("Número inválido (Mínimo "+min+")");
+                System.out.println("Número inválido (Mínimo " + min + ")");
         }
         return num;
     }
 
     /**
      * Pedir long con frase y mínimo
+     *
      * @param frase Frase para el usuario
-     * @param min int incluido
+     * @param min   int incluido
      * @return long
      * @throws IOException BufferedReader
      */
@@ -208,9 +222,10 @@ public class Peticiones {
 
     /**
      * Pedir un número con mínimo y máximo con frase
+     *
      * @param frase Frase para mostrar al usuario
-     * @param min Mínimo incluido
-     * @param max Máximo incluido
+     * @param min   Mínimo incluido
+     * @param max   Máximo incluido
      * @return int
      * @throws IOException BufferedReader
      */
@@ -228,8 +243,9 @@ public class Peticiones {
 
     /**
      * Pedir int con mínimo y una frase
+     *
      * @param frase Frase que muestra al usuario
-     * @param min Mínimo incluido
+     * @param min   Mínimo incluido
      * @return número
      * @throws IOException BufferedReader
      */
@@ -247,6 +263,7 @@ public class Peticiones {
 
     /**
      * Sumar valores de un array
+     *
      * @param array Valores a sumar
      * @return resultado suma
      */
@@ -254,7 +271,7 @@ public class Peticiones {
     public int sumarArray(@NotNull int... array) {
         int r = 0;
         for (int i : array) {
-            r+=i;
+            r += i;
         }
         return r;
     }
@@ -262,6 +279,7 @@ public class Peticiones {
 
     /**
      * Número a día de mes
+     *
      * @param num número de mes
      * @return nombre del mes o null
      */
