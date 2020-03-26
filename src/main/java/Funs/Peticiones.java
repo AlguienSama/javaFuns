@@ -91,9 +91,8 @@ public class Peticiones {
             for (String[] data : opciones) {
                 int i = 0;
                 for (String parm : data) {
-                    i++;
                     System.out.print("[ ");
-                    System.out.print(parm + (i + 1 == data.length ? " ] " : " | "));
+                    System.out.print(parm + (i++ >= data.length ? " ] " : " | "));
                 }
             }
             System.out.println(">");
