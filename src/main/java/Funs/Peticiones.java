@@ -20,12 +20,16 @@ public class Peticiones {
      * Pedir algo al usuario
      *
      * @return string
-     * @throws IOException BufferedReader
      */
-    public String pedirAlgo() throws IOException {
-        String data;
+    public String pedirAlgo() {
+        String data = "";
         do {
-            data = br.readLine();
+            try {
+                data = br.readLine();
+            } catch (IOException e) {
+                System.out.println("Algo malo a ocurrido");
+            }
+            assert data != null;
             if (data.trim().equals(""))
                 System.out.println("Debes de introducir algo!");
         } while (data.trim().equals(""));
@@ -37,13 +41,16 @@ public class Peticiones {
      *
      * @param frase String que quieres que se muestre
      * @return string resultado del usuario
-     * @throws IOException BufferedReader
      */
-    public String pedirAlgo(String frase) throws IOException {
-        String data;
+    public String pedirAlgo(String frase) {
+        String data = "";
         do {
             System.out.println(frase);
-            data = br.readLine();
+            try {
+                data = br.readLine();
+            } catch (IOException e) {
+                System.out.println("Algo malo a ocurrido");
+            }
         } while (data.trim().equals(""));
         return data;
     }
@@ -53,10 +60,9 @@ public class Peticiones {
      *
      * @param opciones Array de opciones
      * @return Opción elegida
-     * @throws IOException BufferedReader
      */
     @NotNull
-    public String eligeOpciones(@NotNull String... opciones) throws IOException {
+    public String eligeOpciones(@NotNull String... opciones) {
         while (true) {
             String algo = pedirAlgo();
             for (String data : opciones) {
@@ -76,9 +82,8 @@ public class Peticiones {
      *
      * @param opciones Array Multidimensional con las opciones
      * @return La posición 0 del array de la opción seleccionada
-     * @throws IOException BufferedReader
      */
-    public String eligeOpciones(@NotNull String[]... opciones) throws IOException {
+    public String eligeOpciones(@NotNull String[]... opciones) {
         while (true) {
             String algo = pedirAlgo();
             for (String[] data : opciones) {
@@ -104,9 +109,8 @@ public class Peticiones {
      *
      * @param opciones Opciones que quieres que coincidan
      * @return boolean si coincide
-     * @throws IOException BufferedReader
      */
-    public boolean validaOpciones(@NotNull String... opciones) throws IOException {
+    public boolean validaOpciones(@NotNull String... opciones) {
         String algo = pedirAlgo();
         for (String data : opciones) {
             if (data.equalsIgnoreCase(algo))
@@ -120,22 +124,38 @@ public class Peticiones {
      * Pedir un int
      *
      * @return int
-     * @throws IOException BufferedReader
      */
-    public int pedirInt() throws IOException {
-        String cantS = pedirAlgo();
-        return Integer.parseInt(cantS);
+    public int pedirNum() {
+        int num = 0;
+        boolean error = true;
+        do {
+            try {
+                num = Integer.parseInt(pedirAlgo());
+                error = false;
+            } catch (NumberFormatException er) {
+                System.out.println("Debes de introducir un número entero!");
+            }
+        } while (error);
+        return num;
     }
 
     /**
      * Pedir un long
      *
      * @return long
-     * @throws IOException BufferedReader
      */
-    public long pedirLong() throws IOException {
-        String cantS = pedirAlgo();
-        return Integer.parseInt(cantS);
+    public long pedirLong() {
+        long num = 0;
+        boolean error = true;
+        do {
+            try {
+                num = Integer.parseInt(pedirAlgo());
+                error = false;
+            } catch (NumberFormatException er) {
+                System.out.println("Debes de introducir un número!");
+            }
+        } while (error);
+        return num;
     }
 
     /**
@@ -143,13 +163,12 @@ public class Peticiones {
      *
      * @param min mínimo incluido
      * @return int
-     * @throws IOException BufferedReader
      */
-    public int pedirMin(int min) throws IOException {
+    public int pedirNum(int min) {
         boolean exit = false;
         int num = 0;
         while (!exit) {
-            num = pedirInt();
+            num = pedirNum();
             if (num >= min)
                 exit = true;
             else
@@ -164,13 +183,12 @@ public class Peticiones {
      * @param min Mínimo incluido
      * @param max Máximo incluido
      * @return int
-     * @throws IOException BufferedReader
      */
-    public int pedirNum(int min, int max) throws IOException {
+    public int pedirNum(int min, int max) {
         boolean exit = false;
         int num = 0;
         while (!exit) {
-            num = pedirInt();
+            num = pedirNum();
             if (num <= max & num >= min)
                 exit = true;
             else
@@ -184,9 +202,8 @@ public class Peticiones {
      *
      * @param min int incluido
      * @return long
-     * @throws IOException BufferedReader
      */
-    public long pedirLong(int min) throws IOException {
+    public long pedirLong(int min) {
         boolean exit = false;
         long num = 0;
         while (!exit) {
@@ -205,9 +222,8 @@ public class Peticiones {
      * @param frase Frase para el usuario
      * @param min   int incluido
      * @return long
-     * @throws IOException BufferedReader
      */
-    public long pedirLong(String frase, int min) throws IOException {
+    public long pedirLong(String frase, int min) {
         boolean exit = false;
         long num = 0;
         while (!exit) {
@@ -226,14 +242,13 @@ public class Peticiones {
      * @param min   Mínimo incluido
      * @param max   Máximo incluido
      * @return int
-     * @throws IOException BufferedReader
      */
-    public int pedirNum(String frase, int min, int max) throws IOException {
+    public int pedirNum(String frase, int min, int max) {
         boolean exit = false;
         int num = 0;
         while (!exit) {
             System.out.println(frase);
-            num = pedirInt();
+            num = pedirNum();
             if (num <= max & num >= min)
                 exit = true;
         }
@@ -246,14 +261,13 @@ public class Peticiones {
      * @param frase Frase que muestra al usuario
      * @param min   Mínimo incluido
      * @return número
-     * @throws IOException BufferedReader
      */
-    public int pedirNum(String frase, int min) throws IOException {
+    public int pedirNum(String frase, int min) {
         boolean salir = false;
         int num;
         do {
             System.out.println(frase);
-            num = pedirInt();
+            num = pedirNum();
             if (num >= min)
                 salir = true;
         } while (!salir);
